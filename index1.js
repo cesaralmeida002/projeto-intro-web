@@ -31,7 +31,7 @@ const cadastroCliente4 = {
   anoNascimento: 1987,
   preferencial: true,
   nacionalidade: "US",
-  pagamento: ["dinheiro"],
+  pagamento: ["dinheiro", "crédito"],
 };
 //2. Crie um array para guardar os objetos. Este array deve estar vazio, por enquanto;
 
