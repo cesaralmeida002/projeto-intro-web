@@ -3,35 +3,39 @@
 //1. Transforme os itens que criamos nas últimas semanas em objetos.
 
 const cadastroCliente1 = {
-  cliente: "Carlos",
+  cliente: "CARLOS",
   anoNascimento: 1988,
-  preferencial: false,
+  preferencial: true,
   nacionalidade: "BR",
   pagamento: ["credito", "debito", "dinheiro", "pix"],
+  imagem: "./homem-1.jpeg",
 };
 
 const cadastroCliente2 = {
-  cliente: "José",
+  cliente: "JOSÉ",
   anoNascimento: 1959,
   preferencial: true,
   nacionalidade: "FR",
   pagamento: ["credito", "debito", "dinheiro"],
+  imagem: "./homem-frança.jpg",
 };
 
 const cadastroCliente3 = {
-  cliente: "Maria",
+  cliente: "MARIA",
   anoNascimento: 1960,
-  preferencial: false,
+  preferencial: true,
   nacionalidade: "IT",
   pagamento: ["debito", "dinheiro"],
+  imagem: "./mulhre-japao.jpg"
 };
 
 const cadastroCliente4 = {
-  cliente: "Ana",
+  cliente: "ANA",
   anoNascimento: 1987,
   preferencial: true,
   nacionalidade: "US",
   pagamento: ["dinheiro", "crédito"],
+  imagem: "./mulher-EUA.jpg"
 };
 //2. Crie um array para guardar os objetos. Este array deve estar vazio, por enquanto;
 
@@ -136,7 +140,61 @@ const retornaObjeto = (array, string) => {
       }
     }
   }
-  alert(`O item ${string} não foi encontrado.`)
-  return("Usuário não encontrado")
+  // alert(`O item ${string} não foi encontrado.`)
+  // return("Usuário não encontrado")
 };
-console.log(retornaObjeto(inclusaoCliente, "ana"))
+// console.log(retornaObjeto(inclusaoCliente, "ana"))
+
+//  (SEMANA-6 - Item 1)
+
+console.log(inclusaoCliente)
+
+const teste = document.getElementById("listaDeItens")
+console.log(teste)
+
+inclusaoCliente.map(cliente =>{
+  function iniciarCliente () {
+    teste.innerHTML += `<section  class="item">
+    <img src="${cliente.imagem}" width="150" height="150" alt="gitHub">
+    <ol>
+       <li><strong>Nome:</strong> ${cliente.cliente}</li>
+       <li><strong>Ano de Nascimento:</strong> ${cliente.anoNascimento}</li>
+       <li><strong>Atendimento Preferencial:</strong> ${cliente.preferencial}</li>
+       <li><strong>Nacionalidade:</strong> ${cliente.nacionalidade}</li>
+       <li><strong>Formas de Pagamento:</strong> ${cliente.pagamento}</li>
+    </ol>
+</section>`
+  }
+  iniciarCliente()
+})
+
+//  (SEMANA-6 - Item 2)
+
+const inputTxt = document.getElementById("input")
+console.log(inputTxt)
+
+const botaoBtn = document.getElementById("btn")
+console.log(botaoBtn)
+
+botaoBtn.addEventListener("click", (event)=>{
+  event.preventDefault()
+  // console.log(inputTxt.value)
+  const clientesIguais = inclusaoCliente.filter((nomeDoCliente) => nomeDoCliente.cliente.includes(inputTxt.value.toUpperCase()))
+  if(inputTxt.value === ""){
+    alert("Cliente não encontrado!")
+  }else{
+    clientesIguais.map(cliente => {
+      teste.innerHTML =`<section  class="item">
+        <img src="${cliente.imagem}" width="150" height="150" alt="gitHub">
+        <ol>
+           <li><strong>Nome:</strong> ${cliente.cliente}</li>
+           <li><strong>Ano de Nascimento:</strong> ${cliente.anoNascimento}</li>
+           <li><strong>Atendimento Preferencial:</strong> ${cliente.preferencial}</li>
+           <li><strong>Nacionalidade:</strong> ${cliente.nacionalidade}</li>
+           <li><strong>Formas de Pagamento:</strong> ${cliente.pagamento}</li>
+        </ol>
+    </section>`
+  
+})
+}
+})
